@@ -1,5 +1,6 @@
 import pprint
 from typing import List
+from pathlib import Path
 
 import pyrallis
 import torch
@@ -75,7 +76,7 @@ def main(config: RunConfig):
                               token_indices=token_indices,
                               seed=g,
                               config=config)
-        prompt_output_path = config.output_path / config.prompt
+        prompt_output_path = (MODEL_DIR/"results").as_posix()
         prompt_output_path.mkdir(exist_ok=True, parents=True)
         image.save(prompt_output_path / f'{seed}.png')
         images.append(image)
