@@ -17,7 +17,8 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 def load_model(config: RunConfig):
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
-    stable = AttendAndExcitePipeline.from_pretrained("CompVis/stable-diffusion-v1-4").to(device)
+    path = (MODEL_DIR / "logs2"/"food_images_20230222-164403"/"ckpts"/"food_images-ep04-gs38240").as_posix()
+    stable = AttendAndExcitePipeline.from_pretrained(path).to(device)
     return stable
 
 
